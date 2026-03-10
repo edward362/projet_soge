@@ -6,7 +6,6 @@ def test_hermite():
     np.random.seed(42)
     N = 1000000
     Z = np.random.randn(N)
-    
     H1 = sp.eval_hermitenorm(1, Z)
     H2 = sp.eval_hermitenorm(2, Z)
     H3 = sp.eval_hermitenorm(3, Z)
@@ -25,7 +24,6 @@ def test_influence_param():
             Z = np.random.randn(N)
             ST = S0 * np.exp((r - 0.5 * sigma**2) * T + sigma * np.sqrt(T) * Z)
             payoffs = np.exp(-r * T) * np.maximum(ST - K, 0)
-            
             variance = np.var(payoffs, ddof=1)
             erreur = np.sqrt(variance / N)
             print(f"T={T}, vol={sigma} | Var: {variance:.2f}, Err: {erreur:.4f}")
